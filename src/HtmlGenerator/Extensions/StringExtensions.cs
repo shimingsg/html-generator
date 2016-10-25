@@ -1,7 +1,19 @@
-﻿namespace HtmlGenerator.Extensions
+﻿using System;
+using System.Collections.Generic;
+
+namespace HtmlGenerator.Extensions
 {
     public static class StringExtensions
     {
+        public class AsciiCaseInsensitiveComparer : IEqualityComparer<string>
+        {
+            public static IEqualityComparer<string> Comparer { get; } = new AsciiCaseInsensitiveComparer();
+
+            public bool Equals(string x, string y) => EqualsAsciiOrdinalIgnoreCase(x, y);
+
+            public int GetHashCode(string obj) => obj.GetHashCode();
+        }
+
         public static string ToAsciiLower(this string text) => ToAsciiLower(text, 0, text.Length);
 
         public static unsafe string ToAsciiLower(this string text, int startIndex, int length)
