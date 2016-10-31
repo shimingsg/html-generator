@@ -166,6 +166,14 @@ namespace HtmlGenerator.SemanticAnalysis
                 isGlobal: true
             ));
 
+            // TODO: add (for br)
+            RegisterAtribute(new AttributeInformation(
+                "clear",
+                AttributeValueType.Enumerated,
+                validValues: new string[] { "left", "right", "all" },
+                supportedStatus: SupportedStatus.Obsolete
+            ));
+
             // TODO: add
             RegisterAtribute(new AttributeInformation(
                 "code",
@@ -752,10 +760,11 @@ namespace HtmlGenerator.SemanticAnalysis
                 AttributeValueType.Boolean
             ));
             
+            // TODO: non-conforming: "circ", "polygon", "rectangle"
             RegisterAtribute(new AttributeInformation(
                 "shape",
                 AttributeValueType.Enumerated,
-                validValues: new string[] { "circle", "default", "poly", "rect" }
+                validValues: new string[] { "circle", "circ", "default", "poly", "polygon", "rect", "rectangle" }
             ));
 
             RegisterAtribute(new AttributeInformation(
@@ -817,11 +826,6 @@ namespace HtmlGenerator.SemanticAnalysis
             RegisterAtribute(new AttributeInformation(
                 "target",
                 AttributeValueType.BrowsingContextNameOrKeyword
-            ));
-
-            RegisterAtribute(new AttributeInformation(
-                "tabindex",
-                AttributeValueType.Integer
             ));
 
             RegisterAtribute(new AttributeInformation(

@@ -2,12 +2,20 @@
 {
     public enum ElementCategory
     {
-        MetadataContent = 1,
+        None = 0,
+        Metadata = 1,
         Interactive = 2,
-        HeadingContent = 4,
+        Heading = 4,
         Palpable = 8,
-        SectioningContent = 16,
+        Sectioning = 16,
         Phrasing = 32,
         Flow = 64,
+        Embedded = 128,
+        SectioningRoot = 256,
+        Listed = 512,
+        Labelable = 1024,
+        Submittable = 2048,
+        FormAssociated = 4096,
+        ScriptSupporting = 8192
     }
 }
