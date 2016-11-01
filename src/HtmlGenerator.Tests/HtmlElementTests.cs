@@ -131,6 +131,18 @@ namespace HtmlGenerator.Tests
             };
             yield return new object[]
             {
+                new HtmlElement("element1", new HtmlElement("element2"), new HtmlAttribute("attribute"), new HtmlAttribute("attribute2")),
+                new HtmlElement("element1", new HtmlElement("element2"), new HtmlAttribute("attribute")),
+                false
+            };
+            yield return new object[]
+            {
+                new HtmlElement("element1", new HtmlElement("element2"), new HtmlAttribute("attribute")),
+                new HtmlElement("element1", new HtmlElement("element2"), new HtmlAttribute("attribute"), new HtmlAttribute("attribute2")),
+                false
+            };
+            yield return new object[]
+            {
                 new HtmlElement("element1", new HtmlElement("element2"), new HtmlAttribute("attribute")),
                 new HtmlElement("element1", new HtmlElement("element2")),
                 false
@@ -146,7 +158,7 @@ namespace HtmlGenerator.Tests
         public void Equals(HtmlElement element, object other, bool expected)
         {
             Assert.Equal(element.GetHashCode(), element.GetHashCode());
-            if (other is HtmlElement || other == null)
+            if (other is HtmlElement || (other == null))
             {
                 Assert.Equal(expected, element.Equals((HtmlElement)other));
             }

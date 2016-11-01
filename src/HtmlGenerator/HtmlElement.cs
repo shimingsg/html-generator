@@ -486,25 +486,56 @@ namespace HtmlGenerator
             }
             if (_nodes._count > 0)
             {
-                IEnumerator<HtmlNode> thisNodes = Nodes().GetEnumerator();
-                IEnumerator<HtmlNode> otherNodes = element.Nodes().GetEnumerator();
-                while (thisNodes.MoveNext() && otherNodes.MoveNext())
+                using (IEnumerator<HtmlNode> thisNodes = Nodes().GetEnumerator())
                 {
-                    if (!thisNodes.Current.Equals(otherNodes.Current))
+                    using (IEnumerator<HtmlNode> otherNodes = element.Nodes().GetEnumerator())
                     {
-                        return false;
+                        while (otherNodes.MoveNext())
+                        {
+                            if (!thisNodes.MoveNext())
+                            {
+                                // More other nodes than this nodes
+                                return false;
+                            }
+                            if (!thisNodes.Current.Equals(otherNodes.Current))
+                            {
+                                return false;
+                            }
+                        }
+
+                        if (thisNodes.MoveNext())
+                        {
+                            // More this nodes than other nodes
+                            return false;
+                        }
                     }
                 }
             }
+
             if (_attributes._count > 0)
             {
-                IEnumerator<HtmlAttribute> thisAttributes = Attributes().GetEnumerator();
-                IEnumerator<HtmlAttribute> otherAttributes = element.Attributes().GetEnumerator();
-                while (thisAttributes.MoveNext() && otherAttributes.MoveNext())
+                using (IEnumerator<HtmlAttribute> thisAttributes = Attributes().GetEnumerator())
                 {
-                    if (!thisAttributes.Current.Equals(otherAttributes.Current))
+                    using (IEnumerator<HtmlAttribute> otherAttributes = element.Attributes().GetEnumerator())
                     {
-                        return false;
+                        while (otherAttributes.MoveNext())
+                        {
+                            if (!thisAttributes.MoveNext())
+                            {
+                                // More other attributes than this attributes
+                                return false;
+                            }
+                            if (!thisAttributes.Current.Equals(otherAttributes.Current))
+                            {
+                                return false;
+                            }
+                        }
+
+                        if (thisAttributes.MoveNext())
+                        {
+                            // More this attributes than other attributes
+                            return false;
+                        }
                     }
                 }
             }
