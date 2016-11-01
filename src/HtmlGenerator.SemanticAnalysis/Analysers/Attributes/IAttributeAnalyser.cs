@@ -1,4 +1,4 @@
-﻿namespace HtmlGenerator.SemanticAnalysis
+﻿namespace HtmlGenerator.SemanticAnalysis.Analysers.Attributes
 {
     public interface IAttributeAnalyser
     {

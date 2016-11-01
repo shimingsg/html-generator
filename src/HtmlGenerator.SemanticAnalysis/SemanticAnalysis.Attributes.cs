@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using HtmlGenerator.SemanticAnalysis.Analysers;
+﻿using System.Collections.Generic;
 
 namespace HtmlGenerator.SemanticAnalysis
 {
@@ -55,7 +53,7 @@ namespace HtmlGenerator.SemanticAnalysis
                 "action",
                 AttributeValueType.NonEmptyUrl
             ));
-            
+
             RegisterAtribute(new AttributeInformation(
                 "align",
                 AttributeValueType.Enumerated,
@@ -84,7 +82,7 @@ namespace HtmlGenerator.SemanticAnalysis
                 "async",
                 AttributeValueType.Boolean
             ));
-            
+
             RegisterAtribute(new AttributeInformation(
                 "autocomplete",
                 AttributeValueType.Enumerated,
@@ -220,7 +218,7 @@ namespace HtmlGenerator.SemanticAnalysis
                 "content",
                 AttributeValueType.Text
             ));
-            
+
             RegisterAtribute(new AttributeInformation(
                 "contenteditable",
                 AttributeValueType.Enumerated,
@@ -243,7 +241,7 @@ namespace HtmlGenerator.SemanticAnalysis
                 "coords",
                 AttributeValueType.FloatingPointCommaDelimitedArray
             ));
-            
+
             RegisterAtribute(new AttributeInformation(
                 "crossorigin",
                 AttributeValueType.Enumerated,
@@ -283,7 +281,7 @@ namespace HtmlGenerator.SemanticAnalysis
                 "defer",
                 AttributeValueType.Boolean
             ));
-            
+
             RegisterAtribute(new AttributeInformation(
                 "dir",
                 AttributeValueType.Enumerated,
@@ -306,7 +304,7 @@ namespace HtmlGenerator.SemanticAnalysis
                 "download",
                 AttributeValueType.Text
             ));
-            
+
             RegisterAtribute(new AttributeInformation(
                 "draggable",
                 AttributeValueType.EncodingLabel,
@@ -321,7 +319,7 @@ namespace HtmlGenerator.SemanticAnalysis
                 isGlobal: true,
                 supportedStatus: SupportedStatus.Experimental
             ));
-            
+
             RegisterAtribute(new AttributeInformation(
                 "enctype",
                 AttributeValueType.Enumerated,
@@ -344,13 +342,13 @@ namespace HtmlGenerator.SemanticAnalysis
                 "formaction",
                 AttributeValueType.NonEmptyUrl
             ));
-            
+
             RegisterAtribute(new AttributeInformation(
                 "formenctype",
                 AttributeValueType.Enumerated,
                 validValues: new string[] { "application/x-www-form-urlencoded", "multipart/form-data", "text/plain" }
             ));
-            
+
             RegisterAtribute(new AttributeInformation(
                 "formmethod",
                 AttributeValueType.Enumerated,
@@ -397,7 +395,7 @@ namespace HtmlGenerator.SemanticAnalysis
 
             RegisterAtribute(new AttributeInformation(
                 "hreflang",
-                AttributeValueType.BCP47LanguageTag
+                AttributeValueType.Bcp47LanguageTag
             ));
 
             // TODO: add
@@ -424,7 +422,7 @@ namespace HtmlGenerator.SemanticAnalysis
                 AttributeValueType.Id,
                 isGlobal: true
             ));
-            
+
             RegisterAtribute(new AttributeInformation(
                 "inputmode",
                 AttributeValueType.Enumerated,
@@ -477,7 +475,7 @@ namespace HtmlGenerator.SemanticAnalysis
                 "itemtype",
                 AttributeValueType.UniqueAbsoluteUrlSpaceDelimitedArray,
                 supportedStatus: SupportedStatus.Experimental,
-                isGlobal: true    
+                isGlobal: true
             ));
 
             // TODO: WHATWG only
@@ -487,7 +485,7 @@ namespace HtmlGenerator.SemanticAnalysis
                 validValues: new string[] { "rsa", "dsa", "ec" },
                 supportedStatus: SupportedStatus.Deprecated
             ));
-            
+
             RegisterAtribute(new AttributeInformation(
                 "kind",
                 AttributeValueType.Enumerated,
@@ -501,7 +499,7 @@ namespace HtmlGenerator.SemanticAnalysis
 
             RegisterAtribute(new AttributeInformation(
                 "lang",
-                AttributeValueType.BCP47LanguageTagOrEmpty,
+                AttributeValueType.Bcp47LanguageTagOrEmpty,
                 isGlobal: true
             ));
 
@@ -667,7 +665,7 @@ namespace HtmlGenerator.SemanticAnalysis
                 "poster",
                 AttributeValueType.NonEmptyUrl
             ));
-            
+
             RegisterAtribute(new AttributeInformation(
                 "preload",
                 AttributeValueType.Enumerated,
@@ -729,14 +727,14 @@ namespace HtmlGenerator.SemanticAnalysis
                 AttributeValueType.EnumeratedCaseInsensitiveSpaceDelimitedArray,
                 validValues: new string[] { "allow-forms", "allow-modals", "allow-orientation-lock", "allow-pointer-lock", "allow-popups", "allow-popups-to-escape-sandbox", "allow-presentation", "allow-same-origin", "allow-scripts", "allow-top-navigation" }
             ));
-            
+
             RegisterAtribute(new AttributeInformation(
                 "spellcheck",
                 AttributeValueType.Enumerated,
                 validValues: new string[] { "true", "false" },
                 supportedStatus: SupportedStatus.Experimental
             ));
-            
+
             RegisterAtribute(new AttributeInformation(
                 "scope",
                 AttributeValueType.Enumerated,
@@ -759,7 +757,7 @@ namespace HtmlGenerator.SemanticAnalysis
                 "selected",
                 AttributeValueType.Boolean
             ));
-            
+
             // TODO: non-conforming: "circ", "polygon", "rectangle"
             RegisterAtribute(new AttributeInformation(
                 "shape",
@@ -794,7 +792,7 @@ namespace HtmlGenerator.SemanticAnalysis
 
             RegisterAtribute(new AttributeInformation(
                 "srclang",
-                AttributeValueType.BCP47LanguageTag
+                AttributeValueType.Bcp47LanguageTag
             ));
 
             RegisterAtribute(new AttributeInformation(
@@ -839,7 +837,7 @@ namespace HtmlGenerator.SemanticAnalysis
                 AttributeValueType.Text,
                 isGlobal: true
             ));
-            
+
             RegisterAtribute(new AttributeInformation(
                 "translate",
                 AttributeValueType.Enumerated,
@@ -888,7 +886,7 @@ namespace HtmlGenerator.SemanticAnalysis
                 "width",
                 AttributeValueType.NonNegativeInteger
             ));
-            
+
             RegisterAtribute(new AttributeInformation(
                 "wrap",
                 AttributeValueType.Enumerated,

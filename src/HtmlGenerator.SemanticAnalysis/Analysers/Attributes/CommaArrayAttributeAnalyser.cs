@@ -1,15 +1,15 @@
-﻿namespace HtmlGenerator.SemanticAnalysis.Analysers
+﻿namespace HtmlGenerator.SemanticAnalysis.Analysers.Attributes
 {
     public class CommaArrayAttributeAnalyser : IAttributeAnalyser
     {
-        public IAttributeAnalyser Analyser { get; }
+        private IAttributeAnalyser Analyser { get; }
 
         public CommaArrayAttributeAnalyser(IAttributeAnalyser analyser)
         {
             Analyser = analyser;
         }
 
-        private static char[] s_separator = new char[] { ',' };
+        private static readonly char[] s_separator = new char[] { ',' };
 
         public bool IsValid(string name, string value)
         {
@@ -21,6 +21,7 @@
                     return false;
                 }
             }
+
             return true;
         }
     }

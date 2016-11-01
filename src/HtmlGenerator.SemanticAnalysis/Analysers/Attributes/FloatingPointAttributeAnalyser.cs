@@ -1,9 +1,11 @@
-﻿namespace HtmlGenerator.SemanticAnalysis.Analysers
+﻿using System;
+
+namespace HtmlGenerator.SemanticAnalysis.Analysers.Attributes
 {
     public class FloatingPointAttributeAnalyser : IAttributeAnalyser
     {
-        public bool AllowNegative { get; set; }
-        public bool AllowZero { get; set; }
+        private bool AllowNegative { get; }
+        private bool AllowZero { get; }
 
         public FloatingPointAttributeAnalyser(bool allowNegative, bool allowZero)
         {
@@ -19,14 +21,15 @@
             {
                 return false;
             }
-            if (result == 0 && !AllowZero)
+            if ((Math.Abs(result) < 0.01) && !AllowZero)
             {
                 return false;
             }
-            if (result < 0 && !AllowNegative)
+            if ((result < 0) && !AllowNegative)
             {
                 return false;
             }
+
             return true;
         }
     }

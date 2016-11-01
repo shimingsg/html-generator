@@ -1,6 +1,6 @@
 ﻿using HtmlGenerator.Extensions;
 
-namespace HtmlGenerator.SemanticAnalysis.Analysers
+namespace HtmlGenerator.SemanticAnalysis.Analysers.Attributes
 {
     public class BooleanAttributeAnalyser : IAttributeAnalyser
     {
@@ -11,6 +11,7 @@ namespace HtmlGenerator.SemanticAnalysis.Analysers
             {
                 return true;
             }
+
             return StringExtensions.EqualsAsciiOrdinalIgnoreCase(name, value);
         }
     }

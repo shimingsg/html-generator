@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HtmlGenerator.SemanticAnalysis.Analysers
+namespace HtmlGenerator.SemanticAnalysis.Analysers.Attributes
 {
     public class SpaceArrayAttributeAnalyser : IAttributeAnalyser
     {
@@ -13,7 +13,7 @@ namespace HtmlGenerator.SemanticAnalysis.Analysers
             AllowEmpty = allowEmpty;
         }
 
-        private static char[] s_separator = new char[] { ' ', '\t', '\n', '\r', '\v', '\b' };
+        private static readonly char[] s_separator = new char[] { ' ', '\t', '\n', '\r', '\v', '\b' };
 
         public bool IsValid(string name, string value)
         {
@@ -31,6 +31,7 @@ namespace HtmlGenerator.SemanticAnalysis.Analysers
                     return false;
                 }
             }
+
             return true;
         }
     }

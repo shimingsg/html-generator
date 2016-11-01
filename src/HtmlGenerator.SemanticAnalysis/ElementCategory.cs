@@ -1,5 +1,8 @@
-﻿namespace HtmlGenerator.SemanticAnalysis
+﻿using System;
+
+namespace HtmlGenerator.SemanticAnalysis
 {
+    [Flags]
     public enum ElementCategory
     {
         None = 0,

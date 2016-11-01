@@ -1,4 +1,4 @@
-﻿namespace HtmlGenerator.SemanticAnalysis.Analysers.Elements
+﻿namespace HtmlGenerator.SemanticAnalysis.Analysers
 {
     public class HtmlAttributeAnalyser
     {
@@ -10,11 +10,12 @@
                 // No such attribute
                 return false;
             }
-            if (attribute.IsVoid && attributeInformation.ValueType != AttributeValueType.Boolean)
+            if (attribute.IsVoid && (attributeInformation.ValueType != AttributeValueType.Boolean))
             {
                 // A non-void attribute was void
                 return false;
             }
+
             return attributeInformation.Analyser.IsValid(attribute.Name, attribute.Value);
         }
     }

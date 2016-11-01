@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using HtmlGenerator.SemanticAnalysis.Analysers;
+using HtmlGenerator.SemanticAnalysis.Analysers.Attributes;
 
 namespace HtmlGenerator.SemanticAnalysis
 {
     public class AttributeInformation
     {
-        internal AttributeInformation(string tag, AttributeValueType valueType, bool isGlobal = false, string[] validValues = null, SupportedStatus supportedStatus = SupportedStatus.Supported)
+        internal AttributeInformation(string tag, AttributeValueType valueType, bool isGlobal = false, IEnumerable<string> validValues = null, SupportedStatus supportedStatus = SupportedStatus.Supported)
         {
             Tag = tag;
             ValueType = valueType;
@@ -20,17 +20,7 @@ namespace HtmlGenerator.SemanticAnalysis
         public AttributeValueType ValueType { get; }
 
         private IAttributeAnalyser _analyser;
-        public IAttributeAnalyser Analyser
-        {
-            get
-            {
-                if (_analyser == null)
-                {
-                    _analyser = GetAnalyser();
-                }
-                return _analyser;
-            }
-        }
+        public IAttributeAnalyser Analyser => _analyser ?? (_analyser = GetAnalyser());
 
         public bool IsGlobal { get; }
         public IEnumerable<string> ValidValues { get; }
@@ -42,10 +32,10 @@ namespace HtmlGenerator.SemanticAnalysis
             {
                 case AttributeValueType.AsciiCompatibleEncodingSpaceDelimitedArray:
                     return new SpaceArrayAttributeAnalyser(new EncodingLabelAttributeAnalyser(), allowEmpty: false);
-                case AttributeValueType.BCP47LanguageTag:
-                    return new BCP47LanguageTagAnalyser(allowEmpty: false);
-                case AttributeValueType.BCP47LanguageTagOrEmpty:
-                    return new BCP47LanguageTagAnalyser(allowEmpty: true);
+                case AttributeValueType.Bcp47LanguageTag:
+                    return new Bcp47LanguageTagAnalyser(allowEmpty: false);
+                case AttributeValueType.Bcp47LanguageTagOrEmpty:
+                    return new Bcp47LanguageTagAnalyser(allowEmpty: true);
                 case AttributeValueType.Boolean:
                     return new BooleanAttributeAnalyser();
                 case AttributeValueType.BrowsingContextNameOrKeyword:
@@ -89,9 +79,9 @@ namespace HtmlGenerator.SemanticAnalysis
                 case AttributeValueType.NonEmptyText:
                     return new TextAttributeAnalyser(minLength: 1, maxLength: -1);
                 case AttributeValueType.NonEmptyUrl:
-                    return new UrlAttributeAnalyser(allowEmpty: false);
+                    return new UrlAttributeAnalyser(allowedKind: UriKind.RelativeOrAbsolute, allowEmpty: false);
                 case AttributeValueType.NonEmptyUrlSpaceDelimitedArray:
-                    return new SpaceArrayAttributeAnalyser(new UrlAttributeAnalyser(allowEmpty: false), allowEmpty: true);
+                    return new SpaceArrayAttributeAnalyser(new UrlAttributeAnalyser(allowedKind: UriKind.RelativeOrAbsolute, allowEmpty: false), allowEmpty: true);
                 case AttributeValueType.NonNegativeInteger:
                     return new IntegerAttributeAnalyser(allowNegative: false, allowZero: true);
                 case AttributeValueType.PositiveFloatingPointNumberOrAny:
@@ -113,9 +103,10 @@ namespace HtmlGenerator.SemanticAnalysis
                 case AttributeValueType.UniqueSpaceSeparatedCaseSensitiveAbsoluteUrlsDefinedPropertyNamesOrTextSpaceDelimitedArray:
                     return new SpaceArrayAttributeAnalyser(new ItemPropAttributeAnalyser(), allowEmpty: false);
                 case AttributeValueType.Url:
-                    return new UrlAttributeAnalyser(allowEmpty: true);
+                    return new UrlAttributeAnalyser(allowedKind: UriKind.RelativeOrAbsolute, allowEmpty: true);
+                default:
+                    throw new InvalidOperationException("No such analyser");
             }
-            throw new InvalidOperationException("No such analyser");
         }
     }
 }

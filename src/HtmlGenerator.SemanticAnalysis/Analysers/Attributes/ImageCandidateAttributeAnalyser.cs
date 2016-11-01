@@ -1,8 +1,10 @@
-﻿namespace HtmlGenerator.SemanticAnalysis.Analysers
+﻿using System;
+
+namespace HtmlGenerator.SemanticAnalysis.Analysers.Attributes
 {
     public class ImageCandidateAttributeAnalyser : IAttributeAnalyser
     {
-        private static IAttributeAnalyser s_urlAnalyser = new UrlAttributeAnalyser(allowEmpty: false);
+        private static readonly IAttributeAnalyser s_urlAnalyser = new UrlAttributeAnalyser(allowedKind: UriKind.RelativeOrAbsolute, allowEmpty: false);
 
         public bool IsValid(string name, string value)
         {
@@ -24,10 +26,12 @@
                     break;
                 }
             }
+
             if (whitespaceIndex == -1)
             {
                 return s_urlAnalyser.IsValid(name, value);
             }
+
             string url = value.Substring(0, whitespaceIndex);
             return !s_urlAnalyser.IsValid(name, url);
         }

@@ -15,7 +15,7 @@ namespace HtmlGenerator.SemanticAnalysis.Analysers.Elements
 
         public bool IsValid(HtmlElement element)
         {
-            IEnumerable<HtmlAttribute> attributes = element.Attributes();
+            IEnumerable<HtmlAttribute> attributes = element.Attributes().ToArray();
             foreach (string requiredAttribute in RequiredAttributes)
             {
                 if (!attributes.Any(attribute => StringExtensions.EqualsAsciiOrdinalIgnoreCase(attribute.Name, requiredAttribute)))
@@ -31,7 +31,7 @@ namespace HtmlGenerator.SemanticAnalysis.Analysers.Elements
                     // No such attribute
                     return false;
                 }
-                if (attribute.IsVoid && attributeInformation.ValueType != AttributeValueType.Boolean)
+                if (attribute.IsVoid && (attributeInformation.ValueType != AttributeValueType.Boolean))
                 {
                     // A non-boolean attribute was void
                     return false;
@@ -42,6 +42,7 @@ namespace HtmlGenerator.SemanticAnalysis.Analysers.Elements
                     return false;
                 }
             }
+
             return true;
         }
     }

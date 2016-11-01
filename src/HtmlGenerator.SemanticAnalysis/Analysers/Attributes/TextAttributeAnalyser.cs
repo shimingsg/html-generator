@@ -1,4 +1,4 @@
-﻿namespace HtmlGenerator.SemanticAnalysis.Analysers
+﻿namespace HtmlGenerator.SemanticAnalysis.Analysers.Attributes
 {
     public class TextAttributeAnalyser : IAttributeAnalyser
     {
@@ -13,7 +13,7 @@
 
         public bool IsValid(string name, string value)
         {
-            if (MinLength == 0 && value == null)
+            if ((MinLength == 0) && (value == null))
             {
                 return false;
             }
@@ -21,7 +21,8 @@
             {
                 return value.Length >= MinLength;
             }
-            return value.Length >= MinLength && value.Length <= MaxLength;
+
+            return (value.Length >= MinLength) && (value.Length <= MaxLength);
         }
     }
 }

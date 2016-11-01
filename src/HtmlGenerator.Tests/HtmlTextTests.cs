@@ -37,7 +37,9 @@ namespace HtmlGenerator.Tests
         [Fact]
         public void ImplicitOperator_NullString_ThrowsArgumentNullException()
         {
+#pragma warning disable 219
             Assert.Throws<ArgumentNullException>("text", () => { HtmlText text = (string)null; });
+#pragma warning restore 219
         }
 
         [Fact]
@@ -61,7 +63,7 @@ namespace HtmlGenerator.Tests
         [MemberData(nameof(Equals_TestData))]
         public void Equals_ReturnsExpected(HtmlText text, object other, bool expected)
         {
-            if (other is HtmlText || other == null)
+            if (other is HtmlText || (other == null))
             {
                 Assert.Equal(expected, text.GetHashCode().Equals(other?.GetHashCode()));
                 Assert.Equal(expected, text.Equals((HtmlText)other));

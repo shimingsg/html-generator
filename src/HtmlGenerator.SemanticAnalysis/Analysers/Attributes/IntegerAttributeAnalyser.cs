@@ -1,4 +1,4 @@
-﻿namespace HtmlGenerator.SemanticAnalysis.Analysers
+﻿namespace HtmlGenerator.SemanticAnalysis.Analysers.Attributes
 {
     internal class IntegerAttributeAnalyser : IAttributeAnalyser
     {
@@ -20,14 +20,15 @@
             {
                 return false;
             }
-            if (result == 0 && !AllowZero)
+            if ((result == 0) && !AllowZero)
             {
                 return false;
             }
-            if (result < 0 && !AllowNegative)
+            if ((result < 0) && !AllowNegative)
             {
                 return false;
             }
+
             return true;
         }
     }

@@ -1,4 +1,4 @@
-﻿namespace HtmlGenerator.SemanticAnalysis.Analysers
+﻿namespace HtmlGenerator.SemanticAnalysis.Analysers.Attributes
 {
     public class IdAttributeAnalyser : IAttributeAnalyser
     {
@@ -8,13 +8,15 @@
             {
                 return false;
             }
-            for (int i = 0; i < value.Length; i++)
+
+            foreach (char t in value)
             {
-                if (char.IsWhiteSpace(value[i]))
+                if (char.IsWhiteSpace(t))
                 {
                     return false;
                 }
             }
+
             return true;
         }
     }

@@ -84,7 +84,7 @@ namespace HtmlGenerator.Tests
         [MemberData(nameof(Equals_TestData))]
         public void Equals_ReturnsExpected(HtmlDoctype doctype, object other, bool expected)
         {
-            if (other is HtmlDoctype || other == null)
+            if (other is HtmlDoctype || (other == null))
             {
                 Assert.Equal(expected, doctype.GetHashCode().Equals(other?.GetHashCode()));
                 Assert.Equal(expected, doctype.Equals((HtmlDoctype)other));

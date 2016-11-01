@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace HtmlGenerator.SemanticAnalysis.Analysers
+namespace HtmlGenerator.SemanticAnalysis.Analysers.Attributes
 {
     public class EnumeratedAnalyser : IAttributeAnalyser
     {

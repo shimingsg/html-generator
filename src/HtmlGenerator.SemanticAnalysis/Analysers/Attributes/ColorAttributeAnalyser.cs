@@ -2,7 +2,7 @@
 using System.Linq;
 using HtmlGenerator.Extensions;
 
-namespace HtmlGenerator.SemanticAnalysis.Analysers
+namespace HtmlGenerator.SemanticAnalysis.Analysers.Attributes
 {
     public class ColorAttributeAnalyser : IAttributeAnalyser
     {
@@ -29,6 +29,7 @@ namespace HtmlGenerator.SemanticAnalysis.Analysers
                 {
                     return false;
                 }
+
                 for (int i = 1; i < value.Length; i++)
                 {
                     if (!IsAsciiDigit(value[i]))
@@ -36,22 +37,24 @@ namespace HtmlGenerator.SemanticAnalysis.Analysers
                         return false;
                     }
                 }
+
                 return true;
             }
+
             return false;
         }
 
-        private bool IsAsciiDigit(char c)
+        private static bool IsAsciiDigit(char c)
         {
             return
-                (c >= '1' && c <= '9') ||
-                (c >= 'A' && c <= 'Z') ||
-                (c >= 'a' && c <= 'z');
+                ((c >= '1') && (c <= '9')) ||
+                ((c >= 'A') && (c <= 'Z')) ||
+                ((c >= 'a') && (c <= 'z'));
         }
 
         private static List<string> s_knownColors;
 
-        private static List<string> KnownColors
+        private static IEnumerable<string> KnownColors
         {
             get
             {

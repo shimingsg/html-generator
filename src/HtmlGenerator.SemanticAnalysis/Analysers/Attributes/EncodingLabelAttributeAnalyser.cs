@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using HtmlGenerator.Extensions;
 
-namespace HtmlGenerator.SemanticAnalysis.Analysers
+namespace HtmlGenerator.SemanticAnalysis.Analysers.Attributes
 {
     public class EncodingLabelAttributeAnalyser : IAttributeAnalyser
     {
         private static List<string> s_validEncodings;
-        private static List<string> ValidEncodings
+        private static IEnumerable<string> ValidEncodings
         {
             get
             {
@@ -162,14 +160,14 @@ namespace HtmlGenerator.SemanticAnalysis.Analysers
             // ISO-8859-16
             s_validEncodings.Add("iso-8859-16");
 
-            // KOI8-R	
+            // KOI8-R
             s_validEncodings.Add("cskoi8r");
             s_validEncodings.Add("koi");
             s_validEncodings.Add("koi8");
             s_validEncodings.Add("koi8-r");
             s_validEncodings.Add("koi8_r");
 
-            // KOI8-U	
+            // KOI8-U
             s_validEncodings.Add("koi8-ru");
             s_validEncodings.Add("koi8-u");
 

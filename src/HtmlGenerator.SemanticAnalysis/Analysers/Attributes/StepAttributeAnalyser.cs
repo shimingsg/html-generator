@@ -1,8 +1,8 @@
-﻿namespace HtmlGenerator.SemanticAnalysis.Analysers
+﻿namespace HtmlGenerator.SemanticAnalysis.Analysers.Attributes
 {
     public class StepAttributeAnalyser : IAttributeAnalyser
     {
-        private static IAttributeAnalyser s_floatAnalyzer = new FloatingPointAttributeAnalyser(allowNegative: false, allowZero: false);
+        private static readonly IAttributeAnalyser s_floatAnalyzer = new FloatingPointAttributeAnalyser(allowNegative: false, allowZero: false);
 
         public bool IsValid(string name, string value)
         {
@@ -10,6 +10,7 @@
             {
                 return true;
             }
+
             return s_floatAnalyzer.IsValid(name, value);
         }
     }

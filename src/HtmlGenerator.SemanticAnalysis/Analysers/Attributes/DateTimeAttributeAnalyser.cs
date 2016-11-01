@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HtmlGenerator.SemanticAnalysis.Analysers
+namespace HtmlGenerator.SemanticAnalysis.Analysers.Attributes
 {
     public class DateTimeAttributeAnalyser : IAttributeAnalyser
     {

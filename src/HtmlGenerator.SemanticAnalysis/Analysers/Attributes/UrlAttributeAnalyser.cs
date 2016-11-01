@@ -1,27 +1,22 @@
 ﻿using System;
 
-namespace HtmlGenerator.SemanticAnalysis.Analysers
+namespace HtmlGenerator.SemanticAnalysis.Analysers.Attributes
 {
     internal class UrlAttributeAnalyser : IAttributeAnalyser
     {
-        public UriKind AllowedKind { get; set; }
-        public bool AllowEmpty { get; set; }
-        public bool AllowWhitespace { get; set; }
+        private UriKind AllowedKind { get; }
+        private bool AllowEmpty { get; }
 
-        public UrlAttributeAnalyser(UriKind allowedKind = UriKind.RelativeOrAbsolute, bool allowEmpty = false, bool allowWhitespace = true)
+        public UrlAttributeAnalyser(UriKind allowedKind, bool allowEmpty)
         {
             AllowedKind = allowedKind;
             AllowEmpty = allowEmpty;
-            AllowWhitespace = allowWhitespace;
         }
 
         public bool IsValid(string name, string value)
         {
-            if (AllowWhitespace)
-            {
-                value = value.Trim();
-            }
-            if (AllowEmpty && value.Length == 0)
+            value = value.Trim();
+            if (AllowEmpty && (value.Length == 0))
             {
                 return true;
             }

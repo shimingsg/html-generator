@@ -2,13 +2,13 @@
 using System.Linq;
 using HtmlGenerator.Extensions;
 
-namespace HtmlGenerator.SemanticAnalysis.Analysers
+namespace HtmlGenerator.SemanticAnalysis.Analysers.Attributes
 {
-    public class BCP47LanguageTagAnalyser : IAttributeAnalyser
+    public class Bcp47LanguageTagAnalyser : IAttributeAnalyser
     {
-        public bool AllowEmpty { get; }
+        private bool AllowEmpty { get; }
 
-        public BCP47LanguageTagAnalyser(bool allowEmpty)
+        public Bcp47LanguageTagAnalyser(bool allowEmpty)
         {
             AllowEmpty = allowEmpty;
         }
@@ -24,52 +24,61 @@ namespace HtmlGenerator.SemanticAnalysis.Analysers
             {
                 return IrregularTags.Contains(value, StringExtensions.AsciiCaseInsensitiveComparer.Comparer);
             }
+
             return true;
         }
 
         private static bool VerifyNextSegment(string value, int startIndex, int minLength)
         {
-            int nextDashIndex = value.IndexOf('-', startIndex);
-            if (nextDashIndex >= startIndex && nextDashIndex <= startIndex + minLength)
+            while (true)
             {
-                // Tag must be at least min length
-                return false;
-            }
-            if (nextDashIndex == -1)
-            {
-                nextDashIndex = value.Length;
-            }
-            if (nextDashIndex > 8)
-            {
-                // Tag must be max length 8
-                return false;
-            }
-            for (int i = startIndex; i < nextDashIndex; i++)
-            {
-                // Tag must be all ASCII letters
-                if (!IsAsciiChar(value[i]))
+                int nextDashIndex = value.IndexOf('-', startIndex);
+                if ((nextDashIndex >= startIndex) && (nextDashIndex <= startIndex + minLength))
                 {
+                    // Tag must be at least min length
                     return false;
                 }
+
+                if (nextDashIndex == -1)
+                {
+                    nextDashIndex = value.Length;
+                }
+                if (nextDashIndex > 8)
+                {
+                    // Tag must be max length 8
+                    return false;
+                }
+
+                for (int i = startIndex; i < nextDashIndex; i++)
+                {
+                    // Tag must be all ASCII letters
+                    if (!IsAsciiChar(value[i]))
+                    {
+                        return false;
+                    }
+                }
+
+                if (nextDashIndex != value.Length)
+                {
+                    startIndex = nextDashIndex + 1;
+                    minLength = 2;
+                    continue;
+                }
+                // Done parsing
+                return true;
             }
-            if (nextDashIndex != value.Length)
-            {
-                return VerifyNextSegment(value, nextDashIndex + 1, 2); 
-            }
-            // Done parsing
-            return true;
         }
 
         private static bool IsAsciiChar(char c)
         {
             return
-                (c >= 'A' && c <= 'Z') ||
-                (c >= 'a' && c <= 'z');
+                ((c >= 'A') && (c <= 'Z')) ||
+                ((c >= 'a') && (c <= 'z'));
         }
 
         private static List<string> s_irregularTags;
 
-        private static List<string> IrregularTags
+        private static IEnumerable<string> IrregularTags
         {
             get
             {

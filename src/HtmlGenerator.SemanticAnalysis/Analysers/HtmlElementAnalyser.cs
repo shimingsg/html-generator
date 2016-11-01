@@ -1,4 +1,4 @@
-﻿namespace HtmlGenerator.SemanticAnalysis.Analysers.Elements
+﻿namespace HtmlGenerator.SemanticAnalysis.Analysers
 {
     public class HtmlElementAnalyser
     {
@@ -25,6 +25,7 @@
                 // Invalid elements
                 return false;
             }*/
+
             return true;
         }
     }

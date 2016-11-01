@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace HtmlGenerator.Extensions
 {
@@ -22,12 +21,13 @@ namespace HtmlGenerator.Extensions
             for (int i = startIndex; i < startIndex + length ; i++)
             {
                 char c = text[i];
-                if (c >= 'A' && c <= 'Z')
+                if ((c >= 'A') && (c <= 'Z'))
                 {
                     hasUpperCase = true;
                     break;
                 }
             }
+
             if (!hasUpperCase)
             {
                 return text.Substring(startIndex, length);
@@ -37,7 +37,7 @@ namespace HtmlGenerator.Extensions
             for (int i = startIndex; i < startIndex + length ; i++)
             {
                 char c = text[i];
-                if (c >= 'A' && c <= 'Z')
+                if ((c >= 'A') && (c <= 'Z'))
                 {
                     copy[i - startIndex] = (char)(c | 0x20);
                 }
@@ -46,6 +46,7 @@ namespace HtmlGenerator.Extensions
                     copy[i - startIndex] = c;
                 }
             }
+
             return new string(copy, 0, length);
         }
 
@@ -57,6 +58,7 @@ namespace HtmlGenerator.Extensions
             {
                 return false;
             }
+
             for (int i = 0; i < lengthA; i++)
             {
                 char c1 = valueA[startIndexA + i];
@@ -66,6 +68,7 @@ namespace HtmlGenerator.Extensions
                     return false;
                 }
             }
+
             return true;
         }
     }

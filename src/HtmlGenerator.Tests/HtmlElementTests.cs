@@ -111,6 +111,18 @@ namespace HtmlGenerator.Tests
             };
             yield return new object[]
             {
+                new HtmlElement("element1", new HtmlElement("element2"), new HtmlElement("element3")),
+                new HtmlElement("element1", new HtmlElement("element2")),
+                false
+            };
+            yield return new object[]
+            {
+                new HtmlElement("element1", new HtmlElement("element2")),
+                new HtmlElement("element1", new HtmlElement("element2"), new HtmlElement("element3")),
+                false
+            };
+            yield return new object[]
+            {
                 new HtmlElement("element", new HtmlElement("element2"), new HtmlAttribute("attribute")),
                 new HtmlElement("element", new HtmlElement("other-element"), new HtmlAttribute("attribute")),
                 false

@@ -15,7 +15,7 @@ namespace HtmlGenerator.SemanticAnalysis.Analysers.Elements
 
         public bool IsValid(HtmlElement element)
         {
-            IEnumerable<HtmlElement> elements = element.Elements();
+            IEnumerable<HtmlElement> elements = element.Elements().ToArray();
             foreach (string requiredAttribute in RequiredElements)
             {
                 if (!elements.Any(child => StringExtensions.EqualsAsciiOrdinalIgnoreCase(child.Tag, requiredAttribute)))

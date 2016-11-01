@@ -1,4 +1,4 @@
-﻿namespace HtmlGenerator.SemanticAnalysis.Analysers
+﻿namespace HtmlGenerator.SemanticAnalysis.Analysers.Attributes
 {
     public class HashNameAttributeAnalyser : IAttributeAnalyser
     {
@@ -12,6 +12,7 @@
             {
                 return false;
             }
+
             return new IdAttributeAnalyser().IsValid(name, value.Substring(1, value.Length - 1));
         }
     }

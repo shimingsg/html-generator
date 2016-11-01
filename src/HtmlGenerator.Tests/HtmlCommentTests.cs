@@ -44,7 +44,7 @@ namespace HtmlGenerator.Tests
         [MemberData(nameof(Equals_TestData))]
         public void Equals_ReturnsExpected(HtmlComment comment, object other, bool expected)
         {
-            if (other is HtmlComment || other == null)
+            if (other is HtmlComment || (other == null))
             {
                 Assert.Equal(expected, comment.GetHashCode().Equals(other?.GetHashCode()));
                 Assert.Equal(expected, comment.Equals((HtmlComment)other));

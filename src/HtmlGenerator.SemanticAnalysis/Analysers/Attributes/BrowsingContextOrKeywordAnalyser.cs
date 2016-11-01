@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace HtmlGenerator.SemanticAnalysis.Analysers
+namespace HtmlGenerator.SemanticAnalysis.Analysers.Attributes
 {
     public class BrowsingContextOrKeywordAnalyser : IAttributeAnalyser
     {
@@ -15,6 +15,7 @@ namespace HtmlGenerator.SemanticAnalysis.Analysers
             {
                 return true;
             }
+
             return value[0] != '_';
         }
 

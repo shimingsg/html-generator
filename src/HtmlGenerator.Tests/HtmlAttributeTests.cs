@@ -144,7 +144,7 @@ namespace HtmlGenerator.Tests
         [MemberData(nameof(Equals_TestData))]
         public void Equals_ReturnsExpected(HtmlAttribute attribute, object other, bool expected)
         {
-            if (other is HtmlAttribute || other == null)
+            if (other is HtmlAttribute || (other == null))
             {
                 Assert.Equal(expected, attribute.GetHashCode().Equals(other?.GetHashCode()));
                 Assert.Equal(expected, attribute.Equals((HtmlAttribute)other));

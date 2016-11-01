@@ -26,18 +26,18 @@ namespace HtmlGenerator.SemanticAnalysis
             IsVoid = isVoid;
         }
 
-        public string Tag { get; set; }
+        public string Tag { get; }
 
-        public ElementCategory Category { get; set; }
-        public ElementCategory ParentCategory { get; set; }
-        public ElementCategory ChildrenCategory { get; set; }
+        public ElementCategory Category { get; }
+        public ElementCategory ParentCategory { get; }
+        public ElementCategory ChildrenCategory { get; }
 
-        public IEnumerable<string> RequiredAttributes { get; set; }
-        public IEnumerable<string> RequiredElements { get; set; }
-        
-        public IEnumerable<string> Attributes { get; set; }
-        public IEnumerable<string> AriaRoleAttributes { get; set; }
+        public IEnumerable<string> RequiredAttributes { get; }
+        public IEnumerable<string> RequiredElements { get; }
 
-        public bool IsVoid { get; set; }
+        public IEnumerable<string> Attributes { get; }
+        public IEnumerable<string> AriaRoleAttributes { get; }
+
+        public bool IsVoid { get; }
     }
 }

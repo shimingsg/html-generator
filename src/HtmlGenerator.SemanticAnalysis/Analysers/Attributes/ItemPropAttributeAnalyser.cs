@@ -1,4 +1,4 @@
-﻿namespace HtmlGenerator.SemanticAnalysis.Analysers
+﻿namespace HtmlGenerator.SemanticAnalysis.Analysers.Attributes
 {
     public class ItemPropAttributeAnalyser : IAttributeAnalyser
     {
@@ -9,14 +9,15 @@
             {
                 return false;
             }
-            for (int i = 0; i < value.Length; i++)
+
+            foreach (char c in value)
             {
-                char c = value[i];
-                if (c == '.' || c == ':')
+                if ((c == '.') || (c == ':'))
                 {
                     return false;
                 }
             }
+
             return true;
         }
     }

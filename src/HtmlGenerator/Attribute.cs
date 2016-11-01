@@ -1,6 +1,6 @@
-namespace HtmlGenerator 
+namespace HtmlGenerator
 {
-    public static class Attribute 
+    public static class Attribute
     {
         public static HtmlAttribute Accept(string value) => new HtmlAttribute("accept", value);
         public static HtmlAttribute AcceptCharset(string value) => new HtmlAttribute("accept-charset", value);
