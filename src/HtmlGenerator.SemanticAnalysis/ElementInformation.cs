@@ -9,6 +9,7 @@ namespace HtmlGenerator.SemanticAnalysis
             ElementCategory category, ElementCategory parentCategory, ElementCategory childrenCategory,
             IEnumerable<string> requiredAttributes = null, IEnumerable<string> requiredElements = null,
             IEnumerable<string> attributes = null, IEnumerable<string> ariaRoleAttributes = null,
+            SupportedStatus supportedStatus = SupportedStatus.Supported,
             bool isVoid = false)
         {
             Tag = tag;
@@ -24,6 +25,7 @@ namespace HtmlGenerator.SemanticAnalysis
             AriaRoleAttributes = ariaRoleAttributes ?? Enumerable.Empty<string>();
 
             IsVoid = isVoid;
+            SupportedStatus = supportedStatus;
         }
 
         public string Tag { get; }
@@ -37,6 +39,8 @@ namespace HtmlGenerator.SemanticAnalysis
 
         public IEnumerable<string> Attributes { get; }
         public IEnumerable<string> AriaRoleAttributes { get; }
+
+        public SupportedStatus SupportedStatus { get; }
 
         public bool IsVoid { get; }
     }
