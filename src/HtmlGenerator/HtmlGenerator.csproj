@@ -4,6 +4,13 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <PublishSingleFile>true</PublishSingleFile>
     <PackageProjectUrl />
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/hughbe/html-generator/</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Description>A library that simplifies generating complex HTML files from C# code.</Description>
+    <Version>2.0.0-beta-2</Version>
+    <Authors>Hugh Bellamy</Authors>
+    <Copyright>Hugh Bellamy 2016</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
