@@ -4,7 +4,7 @@
     {
         public static string ToAsciiLower(this string text) => ToAsciiLower(text, 0, text.Length);
 
-        public static unsafe string ToAsciiLower(this string text, int startIndex, int length)
+        public static string ToAsciiLower(this string text, int startIndex, int length)
         {
             bool hasUpperCase = false;
             for (int i = startIndex; i < startIndex + length ; i++)
@@ -21,9 +21,10 @@
                 return text.Substring(startIndex, length);
             }
 
-            char* copy = stackalloc char[length];
+            char[] copy = new char[length];
             for (int i = startIndex; i < startIndex + length ; i++)
             {
+
                 char c = text[i];
                 if (c >= 'A' && c <= 'Z')
                 {
@@ -34,6 +35,7 @@
                     copy[i - startIndex] = c;
                 }
             }
+            
             return new string(copy, 0, length);
         }
 

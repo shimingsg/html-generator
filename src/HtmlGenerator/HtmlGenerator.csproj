@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <PublishSingleFile>true</PublishSingleFile>
+    <PackageProjectUrl />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Elements\" />
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+</Project>
